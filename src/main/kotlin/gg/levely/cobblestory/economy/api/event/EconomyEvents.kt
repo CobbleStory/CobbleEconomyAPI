@@ -148,5 +148,5 @@ data class EconomyActionData(
     val uniqueId: UUID,
     val economy: Economy,
     val balance: BigDecimal,
-    val amount: BigDecimal
+    val amount: BigDecimal,
 )

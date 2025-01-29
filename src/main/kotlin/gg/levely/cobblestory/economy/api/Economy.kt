@@ -6,6 +6,7 @@ interface Economy {
 
     companion object {
 
+        @JvmStatic
         fun fromName(name: String): Economy {
             return DefaultEconomy(name)
         }
