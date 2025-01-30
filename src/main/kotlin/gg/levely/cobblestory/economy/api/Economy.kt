@@ -36,5 +36,4 @@ class DefaultEconomy(val economyName: String) : Economy {
         return "DefaultEconomy(economyName='$economyName')"
     }
 
-
 }
