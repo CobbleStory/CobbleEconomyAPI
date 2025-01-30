@@ -21,7 +21,7 @@ object EconomyEvents {
      * }
      * ```
      */
-    @JvmStatic
+    @JvmField
     val ADD = EventFactory.createArrayBacked(
         EconomyAddEvent::class.java
     ) { listeners ->
@@ -42,7 +42,7 @@ object EconomyEvents {
      * }
      * ```
      */
-    @JvmStatic
+    @JvmField
     val SUBTRACT = EventFactory.createArrayBacked(
         EconomySubtractEvent::class.java
     ) { listeners ->
@@ -63,7 +63,7 @@ object EconomyEvents {
      * }
      * ```
      */
-    @JvmStatic
+    @JvmField
     val SET = EventFactory.createArrayBacked(
         EconomySetEvent::class.java
     ) { listeners ->
@@ -85,7 +85,7 @@ object EconomyEvents {
      * ```
      */
 
-    @JvmStatic
+    @JvmField
     val INITIALIZED = EventFactory.createArrayBacked(
         EconomyInitializedEvent::class.java
     ) { listeners ->
