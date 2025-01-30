@@ -69,9 +69,13 @@ publishing {
 	}
 
 	repositories {
-		// Add repositories to publish to here.
-		// Notice: This block does NOT have the same function as the block in the top level.
-		// The repositories here will be used for publishing your artifact, not for
-		// retrieving dependencies.
+		maven {
+			name = "GitHubPackages"
+			url = uri("https://maven.pkg.github.com/${System.getenv("GITHUB_REPOSITORY")}")
+			credentials {
+				username = System.getenv("GITHUB_ACTOR")
+				password = System.getenv("GITHUB_TOKEN")
+			}
+		}
 	}
 }
