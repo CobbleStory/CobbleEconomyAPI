@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    modImplementation("com.github.cobbleStory:economy-api:0.0.1")
+    modImplementation("com.github.cobblestory:economy-api:0.0.1")
 }
 ```
 
@@ -53,7 +53,7 @@ repositories {
 }
 
 dependencies {
-    modImplementation "com.github.cobbleStory:economy-api:0.0.1"
+    modImplementation "com.github.cobblestory:economy-api:0.0.1"
 }
 ```
 
