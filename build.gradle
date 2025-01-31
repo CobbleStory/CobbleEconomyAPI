@@ -11,6 +11,8 @@ base {
 	archivesName = project.archives_base_name
 }
 
+System.out.println("Github Repository: ${System.getenv("GITHUB_REPOSITORY")}")
+
 repositories {
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
@@ -71,7 +73,7 @@ publishing {
 	repositories {
 		maven {
 			name = "GitHubPackages"
-			url = uri("https://maven.pkg.github.com/CobbleStory/CobbleEconomyAPI")
+			url = uri("https://maven.pkg.github.com/${System.getenv("GITHUB_REPOSITORY")}")
 			credentials {
 				username = System.getenv("GITHUB_ACTOR")
 				password = System.getenv("GITHUB_TOKEN")
