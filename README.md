@@ -17,6 +17,65 @@ A Fabric API that allows managing multiple economies dynamically, enabling indep
 
 ---
 
+## 📦 Dependency (GitHub Packages)
+
+This library is published on **[GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-gradle-registry)**. To use it in your project, follow these steps:
+
+### 🛠️ **Gradle (Kotlin DSL)**
+
+```kotlin
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/CobbleStory/CobbleEconomyAPI")
+        credentials {
+            username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USERNAME")
+            password = project.findProperty("gpr.token") as String? ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
+}
+
+dependencies {
+    modImplementation("com.github.cobbleStory:economy-api:0.0.1")
+}
+```
+
+### 🛠️ **Gradle (Groovy DSL)**
+
+```groovy
+repositories {
+    maven {
+        url = uri("https://maven.pkg.github.com/CobbleStory/CobbleEconomyAPI")
+        credentials {
+            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+            password = project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
+}
+
+dependencies {
+    modImplementation "com.github.cobbleStory:economy-api:0.0.1"
+}
+```
+
+### 🔑 **Authentication**
+GitHub Packages requires authentication. You need to set up your credentials in your `gradle.properties` or as environment variables:
+
+#### **Option 1: Add to `gradle.properties`**
+```properties
+gpr.user=your-github-username
+gpr.token=your-personal-access-token
+```
+
+#### **Option 2: Use Environment Variables**
+```sh
+export GITHUB_USERNAME=your-github-username
+export GITHUB_TOKEN=your-personal-access-token
+```
+
+> **Note:** The GitHub token must have `read:packages` permission.
+
+---
+
 ## 📜 Usage
 
 ### 📢 Available Events

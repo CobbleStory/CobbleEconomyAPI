@@ -11,8 +11,6 @@ base {
 	archivesName = project.archives_base_name
 }
 
-System.out.println("Github Repository: ${System.getenv("GITHUB_REPOSITORY")}")
-
 repositories {
 	// Add repositories to retrieve artifacts from in here.
 	// You should only use this when depending on other mods because
