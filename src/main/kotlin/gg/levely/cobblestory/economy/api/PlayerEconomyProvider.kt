@@ -47,4 +47,17 @@ interface PlayerEconomyProvider {
      * @return a list of player names representing the richest players in the given economy.
      */
     fun getMostRichestPlayers(economy: Economy, limit: Int): List<String>
+
+    /**
+     * Retrieves the name of the player at the specified ranking position in a given economy.
+     *
+     * The ranking is determined by sorting players in descending order based on their balance.
+     * A lower index (e.g., `0`) corresponds to the player with the highest balance.
+     *
+     * @param economy the economy to evaluate.
+     * @param index the ranking position of the player to retrieve (0-based index).
+     * @return the name of the player at the specified ranking position, or `null` if no such player exists.
+     */
+    fun getRichestPlayerByIndex(economy: Economy, index: Int): String?
+
 }
