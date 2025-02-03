@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    modImplementation("com.github.cobblestory:economy-api:0.0.2")
+    modImplementation("com.github.cobblestory:economy-api:0.0.3")
 }
 ```
 
@@ -53,7 +53,7 @@ repositories {
 }
 
 dependencies {
-    modImplementation "com.github.cobblestory:economy-api:0.0.2"
+    modImplementation "com.github.cobblestory:economy-api:0.0.3"
 }
 ```
 
@@ -88,6 +88,12 @@ Triggered when the economy system is ready to use.
 ```kotlin
 EconomyEvents.INITIALIZED.register { provider ->
     println("Economy system initialized: $provider")
+    
+    val testPlayer = UUID.randomUUID()
+    val economyType = Economy.fromName("money")
+    val playerEconomy = provider.getEconomy(testPlayer)
+    
+    playerEconomy.setBalance(ecosystemType, 1000.0)
 }
 ```
 
