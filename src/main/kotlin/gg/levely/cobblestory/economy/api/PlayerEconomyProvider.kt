@@ -1,11 +1,44 @@
 package gg.levely.cobblestory.economy.api
 
-import java.util.UUID
+import java.util.*
 
 /**
  * Provides methods to manage and access player economy data.
  */
 interface PlayerEconomyProvider {
+
+    companion object {
+
+        /**
+         * Retrieves the economy provider instance.
+         *
+         * @return the economy provider instance.
+         */
+        private var _instance: PlayerEconomyProvider? = null
+
+        /**
+         * Retrieves the instance of the PlayerEconomyProvider.
+         *
+         * @return The current instance of the PlayerEconomyProvider.
+         * @throws IllegalStateException If the economy provider has not been initialized.
+         *
+         * @deprecated This method is not recommended and its use is discouraged.
+         * It is preferable to use the {@code EconomyEvents.INITIALIZED} event to retrieve the economy provider instance.
+         * This method may be removed in a future update.
+         */
+        @JvmStatic
+        @Throws(IllegalStateException::class)
+        @Deprecated(
+            """
+            This method is not recommended and its use is discouraged.
+            It is preferable to use the EconomyEvents.INITIALIZED event to retrieve the economy provider instance.
+        """)
+        fun getInstance(): PlayerEconomyProvider {
+            return _instance ?: throw IllegalStateException("The economy provider has not been initialized.")
+        }
+
+
+    }
 
     /**
      * Retrieves the economy details of a player by their unique ID.

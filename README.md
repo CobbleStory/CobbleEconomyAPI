@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    modImplementation("com.github.cobblestory:economy-api:0.0.3")
+    modImplementation("com.github.cobblestory:economy-api:0.0.4")
 }
 ```
 
@@ -53,7 +53,7 @@ repositories {
 }
 
 dependencies {
-    modImplementation "com.github.cobblestory:economy-api:0.0.3"
+    modImplementation "com.github.cobblestory:economy-api:0.0.4"
 }
 ```
 
@@ -78,6 +78,41 @@ export GITHUB_TOKEN=your-personal-access-token
 
 ## 📜 Usage
 
+---
+
+### 🔄 **Accessing the Economy Provider Directly**
+Instead of relying on event-based initialization, you can directly access the economy provider using:
+
+```kotlin
+val provider = PlayerEconomyProvider.getInstance()
+
+val playerUUID = UUID.randomUUID()
+val economyType = Economy.fromName("money")
+
+val playerEconomy = provider.getEconomy(playerUUID)
+playerEconomy.addBalance(economyType, 500.0)
+
+println("New balance: ${playerEconomy.getBalance(economyType)}")
+```
+
+⚠️ **Warning:**  
+While `PlayerEconomyProvider.getInstance()` provides direct access to the provider, **it is recommended to use the initialization event** (`EconomyEvents.INITIALIZED`) to store an instance of `EconomyProvider` in your project.  
+This ensures that the provider is **fully initialized** before usage and avoids potential race conditions or null references.
+
+Example of proper instance storage:
+
+```kotlin
+var economyProvider: EconomyProvider? = null
+
+EconomyEvents.INITIALIZED.register { provider ->
+    economyProvider = provider
+}
+```
+
+By following this approach, you ensure that the economy system is properly set up before interacting with it.
+
+---
+
 ### 📢 Available Events
 
 The API provides **four main events** to interact with player balances.
@@ -88,12 +123,6 @@ Triggered when the economy system is ready to use.
 ```kotlin
 EconomyEvents.INITIALIZED.register { provider ->
     println("Economy system initialized: $provider")
-    
-    val testPlayer = UUID.randomUUID()
-    val economyType = Economy.fromName("money")
-    val playerEconomy = provider.getEconomy(testPlayer)
-    
-    playerEconomy.setBalance(ecosystemType, 1000.0)
 }
 ```
 
