@@ -79,7 +79,7 @@ interface PlayerEconomyProvider {
      * @param limit the maximum number of players to include in the list.
      * @return a list of player names representing the richest players in the given economy.
      */
-    fun getMostRichestPlayers(economy: Economy, limit: Int): List<String>
+    fun getRichestPlayers(economy: Economy, limit: Int): List<String>
 
     /**
      * Retrieves the name of the player at the specified ranking position in a given economy.
