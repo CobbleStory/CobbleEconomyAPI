@@ -28,14 +28,14 @@ repositories {
     maven {
         url = uri("https://maven.pkg.github.com/CobbleStory/CobbleEconomyAPI")
         credentials {
-            username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USERNAME")
+            username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_USER")
             password = project.findProperty("gpr.token") as String? ?: System.getenv("GITHUB_TOKEN")
         }
     }
 }
 
 dependencies {
-    modImplementation("com.github.cobblestory:economy-api:0.0.4")
+    modImplementation("com.github.cobblestory:economy-api:1.0.0")
 }
 ```
 
@@ -46,14 +46,14 @@ repositories {
     maven {
         url = uri("https://maven.pkg.github.com/CobbleStory/CobbleEconomyAPI")
         credentials {
-            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+            username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USER")
             password = project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
         }
     }
 }
 
 dependencies {
-    modImplementation "com.github.cobblestory:economy-api:0.0.4"
+    modImplementation "com.github.cobblestory:economy-api:1.0.0"
 }
 ```
 
