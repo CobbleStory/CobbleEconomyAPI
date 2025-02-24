@@ -68,7 +68,7 @@ gpr.token=your-personal-access-token
 
 #### **Option 2: Use Environment Variables**
 ```sh
-export GITHUB_USERNAME=your-github-username
+export GITHUB_USER=your-github-username
 export GITHUB_TOKEN=your-personal-access-token
 ```
 
