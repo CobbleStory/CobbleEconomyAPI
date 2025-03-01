@@ -102,7 +102,7 @@ This ensures that the provider is **fully initialized** before usage and avoids 
 Example of proper instance storage:
 
 ```kotlin
-var economyProvider: EconomyProvider? = null
+var economyProvider: PlayerEconomyProvider? = null
 
 EconomyEvents.INITIALIZED.register { provider ->
     economyProvider = provider
