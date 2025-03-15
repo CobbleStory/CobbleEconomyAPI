@@ -45,7 +45,7 @@ interface PlayerEconomy {
      * @param amount the new balance to set, as a [Double].
      */
     fun setBalance(economy: Economy, amount: Double) {
-        setBalance(economy, BigDecimal.valueOf(amount))
+        setBalance(economy, amount.toBigDecimal())
     }
 
     /**
@@ -63,7 +63,7 @@ interface PlayerEconomy {
      * @param amount the amount to add, as a [Double].
      */
     fun addBalance(economy: Economy, amount: Double) {
-        addBalance(economy, BigDecimal.valueOf(amount))
+        addBalance(economy, amount.toBigDecimal())
     }
 
     /**
@@ -81,8 +81,15 @@ interface PlayerEconomy {
      * @param amount the amount to subtract, as a [Double].
      */
     fun subtractBalance(economy: Economy, amount: Double) {
-        subtractBalance(economy, BigDecimal.valueOf(amount))
+        subtractBalance(economy, amount.toBigDecimal())
     }
+
+    /**
+     * Resets the player's balance for the specified economy to zero.
+     *
+     * @param economy The economy in which to reset the balance.
+     */
+    fun resetBalance(economy: Economy)
 
     /**
      * Checks if the player has at least the specified balance in the given economy.
@@ -101,7 +108,7 @@ interface PlayerEconomy {
      * @return `true` if the player has at least the specified balance, otherwise `false`.
      */
     fun hasBalance(economy: Economy, amount: Double): Boolean {
-        return hasBalance(economy, BigDecimal.valueOf(amount))
+        return hasBalance(economy, amount.toBigDecimal())
     }
 
     /**
@@ -118,4 +125,26 @@ interface PlayerEconomy {
      * @return a map of [Economy] to [BigDecimal] representing all balances.
      */
     fun getBalances(): Map<Economy, BigDecimal>
+
+    /**
+     * Retrieves all cumulative balances of the player across different economies.
+     *
+     * @return A map of [Economy] to [BigDecimal] representing all cumulative balances.
+     */
+    fun getCumulativeBalances(): Map<Economy, BigDecimal>
+
+    /**
+     * Retrieves the cumulative balance of the player for a specific economy.
+     *
+     * @param economy The economy to retrieve the cumulative balance for.
+     * @return The cumulative balance as a [BigDecimal].
+     */
+    fun getCumulativeBalance(economy: Economy): BigDecimal
+
+    /**
+     * Resets the cumulative balance of the player for a specific economy to zero.
+     *
+     * @param economy The economy in which to reset the cumulative balance.
+     */
+    fun resetCumulativeBalance(economy: Economy)
 }
