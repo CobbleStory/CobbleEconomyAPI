@@ -126,25 +126,17 @@ interface PlayerEconomy {
      */
     fun getBalances(): Map<Economy, BigDecimal>
 
-    /**
-     * Retrieves all cumulative balances of the player across different economies.
-     *
-     * @return A map of [Economy] to [BigDecimal] representing all cumulative balances.
-     */
-    fun getCumulativeBalances(): Map<Economy, BigDecimal>
+    fun getBalance(economy: Economy, periodType: EconomyPeriodType): BigDecimal
 
-    /**
-     * Retrieves the cumulative balance of the player for a specific economy.
-     *
-     * @param economy The economy to retrieve the cumulative balance for.
-     * @return The cumulative balance as a [BigDecimal].
-     */
-    fun getCumulativeBalance(economy: Economy): BigDecimal
+    fun setBalance(economy: Economy, periodType: EconomyPeriodType, amount: BigDecimal)
 
-    /**
-     * Resets the cumulative balance of the player for a specific economy to zero.
-     *
-     * @param economy The economy in which to reset the cumulative balance.
-     */
-    fun resetCumulativeBalance(economy: Economy)
+    fun addBalance(economy: Economy, periodType: EconomyPeriodType, amount: BigDecimal)
+
+    fun subtractBalance(economy: Economy, periodType: EconomyPeriodType, amount: BigDecimal)
+
+    fun resetBalance(economy: Economy, periodType: EconomyPeriodType)
+
+    fun hasBalance(economy: Economy, periodType: EconomyPeriodType, amount: BigDecimal): Boolean
+
+    fun getPeriodicBalances(): Map<EconomyPeriodType, Map<Economy, BigDecimal>>
 }

@@ -15,25 +15,8 @@ interface Economy {
 
 }
 
-class DefaultEconomy(val economyName: String) : Economy {
+data class DefaultEconomy(private val economyName: String) : Economy {
 
     override fun getName(): String = economyName
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as DefaultEconomy
-
-        return economyName == other.economyName
-    }
-
-    override fun hashCode(): Int {
-        return economyName.hashCode()
-    }
-
-    override fun toString(): String {
-        return "DefaultEconomy(economyName='$economyName')"
-    }
 
 }
