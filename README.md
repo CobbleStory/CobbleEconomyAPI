@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    modImplementation("gg.levely.cobblestory:economy-api:1.1.0")
+    modImplementation("gg.levely.cobblestory:economy-api:2.0.0")
 }
 ```
 
@@ -53,7 +53,7 @@ repositories {
 }
 
 dependencies {
-    modImplementation "gg.levely.cobblestory:economy-api:1.1.0"
+    modImplementation "gg.levely.cobblestory:economy-api:2.0.0"
 }
 ```
 
