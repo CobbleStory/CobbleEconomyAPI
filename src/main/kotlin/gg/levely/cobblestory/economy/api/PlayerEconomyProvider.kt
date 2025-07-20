@@ -38,6 +38,26 @@ interface PlayerEconomyProvider {
             return _instance ?: throw IllegalStateException("The economy provider has not been initialized.")
         }
 
+        /**
+         * Executes the given [action] only if the [PlayerEconomyProvider] instance has been initialized.
+         *
+         * This method helps avoid NullPointerExceptions by ensuring that the [_instance]
+         * is not null before executing any code on it. If [_instance] is null, the [action] is not invoked.
+         *
+         * @param action A lambda with receiver of type [PlayerEconomyProvider] to be executed if [_instance] is not null.
+         */
+        fun runIfInitialized(action: PlayerEconomyProvider.() -> Unit) {
+            _instance?.action()
+        }
+
+        /**
+         * Checks whether the [PlayerEconomyProvider] instance has been initialized.
+         *
+         * @return `true` if [_instance] is not null; `false` otherwise.
+         */
+        fun isInitialized(): Boolean {
+            return _instance != null
+        }
 
     }
 
